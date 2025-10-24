@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Header from './components/Header'
+import Nav from './components/Nav'
+import Footer from './components/Footer'
+import Inicio from './pages/Inicio'
+import Carrito from './pages/Carrito'
+import ProductDetail from './components/ProductDetail'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App(){
+  const [cart, setCart] = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const addToCart = (product) => setCart(prev => [...prev, product])
+  const toggleLogin = () => setIsLoggedIn(v => !v)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Header />
+      <Nav isLoggedIn={isLoggedIn} toggleLogin={toggleLogin} />
+
+      <Routes>
+        <Route path="/" element={<Inicio addToCart={addToCart} />} />
+        <Route path="/carrito" element={<Carrito cart={cart} setCart={setCart} />} />
+        <Route path="/producto/:id" element={<ProductDetail />} />
+
+        {/* Ruta protegida ejemplo */}
+        <Route
+          path="/admin"
+          element={
+            isLoggedIn ? (
+              <div style={{padding:20}}>
+                <h2>Panel Admin</h2>
+                <p>Contenido protegido</p>
+              </div>
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+
+        <Route path="*" element={<div style={{padding:20}}><h2>404</h2><p>Página no encontrada</p></div>} />
+      </Routes>
+
+      <Footer />
+    </BrowserRouter>
   )
 }
-
-export default App
