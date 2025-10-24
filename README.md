@@ -5,6 +5,8 @@
 Este proyecto es una página e-commerce desarrollada con React.
 Permite explorar productos, agregarlos al carrito y gestionar las compras de forma sencilla e interactiva.
 
+![Vista del carrito](./carrito.png)
+
 🚀 Características principales
 
 Navegación por secciones (Inicio, Productos, Carrito, Contacto).
