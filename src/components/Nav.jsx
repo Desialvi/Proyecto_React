@@ -1,15 +1,25 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
-export default function Nav({ isLoggedIn, toggleLogin }){
+export default function Nav() {
+  const { user, login, logout } = useAuth();
+
   return (
-    <nav className='navbar'>
+    <nav className="navbar">
       <Link to="/">Inicio</Link>
-      <Link to="/carrito">Carrito</Link>
-      <Link to="/admin">Admin</Link>
-      <button className='login-btn' onClick={toggleLogin}>
-        {isLoggedIn ? 'Cerrar sesión' : 'Iniciar sesión'}
-      </button>
+
+      {user && <Link to="/carrito">Carrito</Link>}
+      {user && <Link to="/admin">Admin</Link>}
+
+      {!user ? (
+        <button className="login-btn" onClick={login}>
+          Iniciar sesión
+        </button>
+      ) : (
+        <button className="login-btn" onClick={logout}>
+          Cerrar sesión
+        </button>
+      )}
     </nav>
-  )
+  );
 }
