@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
-import "./styles/style.css";
+import { CartProvider } from "./context/CartContext";
 import "react-toastify/dist/ReactToastify.css";
-
+import "./styles/style.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>

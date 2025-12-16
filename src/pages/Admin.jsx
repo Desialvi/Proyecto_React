@@ -1,8 +1,14 @@
+import { Helmet } from "react-helmet";
+
 export default function Admin() {
   return (
-    <main className="admin">
+    <main className="container">
+      <Helmet>
+        <title>Admin | eCommerce</title>
+      </Helmet>
+
       <h2>Panel de Administración</h2>
-      <p>Contenido protegido para usuarios autenticados</p>
+      <p>Gestión de productos (CRUD)</p>
     </main>
   );
 }
