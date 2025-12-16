@@ -18,19 +18,13 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Inicio />} />
-        <Route
-          path="/carrito"
-          element={user ? <Carrito /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/admin"
-          element={user ? <Admin /> : <Navigate to="/" />}
-        />
+        <Route path="/carrito" element={user ? <Carrito /> : <Navigate to="/" />} />
+        <Route path="/admin" element={user ? <Admin /> : <Navigate to="/" />} />
       </Routes>
 
       <Footer />
 
-      {/* ✅ Toastify SIEMPRE al final */}
+      {/* Toastify */}
       <ToastContainer position="top-right" autoClose={3000} />
     </HashRouter>
   );

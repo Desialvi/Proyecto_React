@@ -9,7 +9,7 @@ export default function ProductList({ addToCart }) {
   const perPage = 6;
 
   useEffect(() => {
-    fetch("https://YOUR_MOCKAPI/products")
+    fetch("https://6940ce2e993d68afba6d1053.mockapi.io/:products")
       .then(res => res.json())
       .then(data => setProducts(data))
       .catch(() => alert("Error al cargar productos"));
