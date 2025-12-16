@@ -6,6 +6,7 @@ import { AuthProvider } from "./context/AuthContext";
 import "./styles/style.css";
 import "react-toastify/dist/ReactToastify.css";
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
     <CartProvider>
