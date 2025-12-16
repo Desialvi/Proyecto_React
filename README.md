@@ -1,4 +1,6 @@
 # React + Vite
+# Proyecto React - Ecommerce
+
 
 🛍️ E-Commerce React – Tienda Demo
 
@@ -41,3 +43,11 @@ Luego abrí http://localhost:5173
 👩‍💻 Autor
 
 Proyecto educativo desarrollado como ejemplo de una tienda en línea moderna con React.
+
+## Funcionalidades
+- Carrito con Context API
+- Autenticación simulada
+- CRUD con MockAPI
+- Rutas protegidas
+- Búsqueda y paginación
+- Diseño responsive

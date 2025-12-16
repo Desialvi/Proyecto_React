@@ -1,35 +1,30 @@
-import React from 'react'
+import { useCart } from "../context/CartContext";
 
-export default function Carrito({ cart, setCart }) {
-  const total = cart.reduce((s, i) => s + i.price, 0);
-
-  const limpiarCarrito = () => {
-    setCart([]); // Vacía el carrito
-  };
+export default function Carrito() {
+  const { cart, removeFromCart, clearCart } = useCart();
+  const total = cart.reduce((s, p) => s + p.price, 0);
 
   return (
-    <main style={{ padding: "20px" }}>
+    <div className="carrito">
       <h2>Carrito</h2>
 
       {cart.length === 0 ? (
-        <p>No hay productos en el carrito</p>
+        <p>Carrito vacío</p>
       ) : (
         <>
           <ul>
-            {cart.map((it, i) => (
+            {cart.map((p, i) => (
               <li key={i}>
-                {it.title} - ${it.price}
+                {p.title} - ${p.price}
+                <button onClick={() => removeFromCart(i)}>❌</button>
               </li>
             ))}
           </ul>
 
-          <h3>Total: ${total.toFixed(2)}</h3>
-
-          <button onClick={limpiarCarrito} style={{ backgroundColor: "magenta" }}>
-            🧹 Limpiar carrito
-          </button>
+          <h3>Total: ${total}</h3>
+          <button onClick={clearCart}>Vaciar carrito</button>
         </>
       )}
-    </main>
+    </div>
   );
 }
